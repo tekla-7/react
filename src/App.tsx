@@ -1,7 +1,31 @@
-import Message from "./Message"
+const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
-function App(){
-  // return <div><Message></Message></div>
-  return <div><Message /></div>
+function genRandomInt(max:number) {
+  return Math.floor(Math.random() * (max + 1));
 }
-export default App
+
+function Header() {
+  const description=reactDescriptions[genRandomInt(2)]
+  return (
+    <header>
+      <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
+      <h1>React Essentials</h1>
+      <p>
+        {description} React concepts you will need for almost any app you are going to build!
+      </p>
+    </header>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <Header />
+      <main>
+        <h2>Time to get started!</h2>
+      </main>
+    </div>
+  );
+}
+
+export default App;
