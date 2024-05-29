@@ -1,21 +1,23 @@
 import {useState} from 'react'
 import {EXAMPLES} from '../data.js'
+import Section from './Section.js';
 import TabButton from "./TabButton.js";
+import Tabs from './Tabs.js';
 export default function Example(){
     const [selectedTopic, setSelectedTopic] = useState();
     function handleSelect(selectedButton) {
       setSelectedTopic(selectedButton);
     }
     return (
-        <section id="examples">
-        <h2>Examples</h2>
+        <Section title='Examples'id="examples" >
+          <Tabs></Tabs>
         <menu>
-          <TabButton onSelect={() => handleSelect("Components")}>
+          <TabButton onClick={() => handleSelect("Components")} isSelected={selectedTopic==='components'}>
             Components
           </TabButton>
-          <TabButton onSelect={() => handleSelect("JSX")}>JSX</TabButton>
-          <TabButton onSelect={() => handleSelect("Props")}>Props</TabButton>
-          <TabButton onSelect={() => handleSelect("State")}>State</TabButton>
+          <TabButton onClick={() => handleSelect("JSX")} isSelected={selectedTopic==='JSX'}>JSX</TabButton>
+          <TabButton onClick={() => handleSelect("Props")} isSelected={selectedTopic==='Props'}>Props</TabButton>
+          <TabButton onClick={() => handleSelect("State")} isSelected={selectedTopic==='State'}>State</TabButton>
         </menu>
         {!selectedTopic && <p>Please select a topic</p>}
         {selectedTopic && (
@@ -27,6 +29,6 @@ export default function Example(){
             </pre>
           </div>
         )}
-      </section>
+      </Section>
     )
 }
